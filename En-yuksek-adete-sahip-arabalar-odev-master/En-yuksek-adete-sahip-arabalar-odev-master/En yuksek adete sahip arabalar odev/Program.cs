@@ -1,0 +1,71 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace En_yuksek_adete_sahip_arabalar_odev
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int m, t, r, enbuyuk = -1500;
+            string s = "";
+            int[,,] Araba = new int[3, 3, 3];
+
+            string[] model = { "Molo", "Metta", "Massat" };
+            string[] tip = { "Sedan", "Station", "Hatchback" };
+            string[] renk = { "Kırmızı", "Beyaz", "Mavi" };
+            Random rastgele = new Random();
+
+            for (m = 0; m <= 2; m++)
+            {
+                for (t = 0; t <= 2; t++)
+                {
+                    for (r = 0; r <= 2; r++)
+                    {
+                        Araba[m, t, r] = rastgele.Next(11);
+                    }
+                }
+            }
+
+            for (m = 0; m <= 2; m++)
+            {
+                for (t = 0; t <= 2; t++)
+                {
+                    for (r = 0; r <= 2; r++)
+                    {
+                        if (Araba[m, t, r] > enbuyuk)
+                        {
+                            enbuyuk = Araba[m, t, r];
+                            s = model[m] + " " + tip[t] + " " + renk[r] + " " + enbuyuk + " adet üretilmiştir";
+                        }
+
+
+                    }
+                }
+            }
+
+            for (m = 0; m <= 2; m++)
+            {
+                for (t = 0; t <= 2; t++)
+                {
+                    for (r = 0; r <= 2; r++)
+                    {
+                        if (Araba[m, t, r] == enbuyuk)
+                        {
+                            s = model[m] + " " + tip[t] + " " + renk[r] + " " + enbuyuk + " adet üretilmiştir";
+                            Console.WriteLine(s);
+                        }
+                    }
+                }
+            }
+
+
+            Console.WriteLine("En yüksek adete sahip arabalar:");
+            Console.Write("Press any key to continue . . . ");
+            Console.ReadKey(true);
+        }
+    }
+}
